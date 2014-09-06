@@ -1,5 +1,5 @@
 # Setting up syncthing local monitoring
-class monitor::syncthing(
+class monitoring::syncthing(
   $token='',
   $url='https://localhost:8080',
 ) {

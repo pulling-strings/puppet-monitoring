@@ -3,12 +3,14 @@ class monitoring::syncthing(
   $token='',
   $url='https://localhost:8080',
 ) {
-  
+
+  $exec = "BUNDLE_GEMFILE=${::monitoring::narkisr_plug_path}/Gemfile bundle exec"
+
   sensu::check {'syncthing-status':
-    command => "${monitor::narkisr_plug_path}/plugins/check-status.rb -u ${url} -t ${token}"
+    command => "${exec} ${::monitoring::narkisr_plug_path}/plugins/syncthing/check-status.rb -u ${url} -t ${token}"
   }
 
   sensu::check {'syncthing-errors':
-    command => "${monitor::narkisr_plug_path}/plugins/check-errors.rb -u ${url} -t ${token}"
+    command => "${exec} ${::monitoring::narkisr_plug_path}/plugins/syncthing/check-errors.rb -u ${url} -t ${token}"
   }
 }

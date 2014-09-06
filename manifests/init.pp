@@ -1,13 +1,25 @@
 # General motnitoring setup
 class monitoring(
-  $narkisr_plug_path = '/opt/sensu-narkisr-plugins/',
-  $community_plug_path = '/opt/sensu-community-plugins/',
+  $narkisr_plug_path = '/opt/sensu-narkisr-plugins',
+  $community_plug_path = '/opt/sensu-community-plugins',
 ){
   package{['ruby1.9.1-dev', 'build-essential']:
     ensure  => present
   } -> Class['sensu']
 
   include sensu
+
+  package{'bundler':
+    ensure   => present,
+    provider => gem
+  } ->
+
+  exec{'install narkisr-sensu-plugins gems':
+    command     => "bundle install",
+    environment => ["BUNDLE_GEMFILE=${narkisr_plug_path}/Gemfile"],
+    user        => 'root',
+    path        => ['/usr/bin','/bin','/usr/local/bin']
+  }
 
   git::clone{$narkisr_plug_path:
     url   => 'git://github.com/narkisr/sensu-narkisr-plugins.git',

@@ -5,10 +5,10 @@ class monitoring::syncthing(
 ) {
   
   sensu::check {'syncthing-status':
-    command => "${monitor::narkisr_plug_path}/check-status.rb -u ${url} -t ${token}"
+    command => "${monitor::narkisr_plug_path}/plugins/check-status.rb -u ${url} -t ${token}"
   }
 
   sensu::check {'syncthing-errors':
-    command => "${monitor::narkisr_plug_path}/check-errors.rb -u ${url} -t ${token}"
+    command => "${monitor::narkisr_plug_path}/plugins/check-errors.rb -u ${url} -t ${token}"
   }
 }

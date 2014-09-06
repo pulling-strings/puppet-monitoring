@@ -1,5 +1,5 @@
 {
-  "name": "puppet-monitor",
+  "name": "puppet-monitoring",
   "version": "0.1.0",
   "author": "narkisr",
   "summary": "Monitoring useful services such as Syncthing, Celestial etc ..",

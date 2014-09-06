@@ -18,7 +18,9 @@ class monitoring(
     command     => "bundle install",
     environment => ["BUNDLE_GEMFILE=${narkisr_plug_path}/Gemfile"],
     user        => 'root',
-    path        => ['/usr/bin','/bin','/usr/local/bin']
+    timeout     => 600,
+    path        => ['/usr/bin','/bin','/usr/local/bin'],
+    require     => [Git::Clone[$narkisr_plug_path], Package['ruby1.9.1-dev', 'build-essential']]
   }
 
   git::clone{$narkisr_plug_path:

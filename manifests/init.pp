@@ -1,8 +1,11 @@
 # General motnitoring setup
-class monitor(
-  $narkisr_plug_path = '/opt/sensu-narkisr-plugins/plugins/syncthing/'
+class monitoring(
+  $narkisr_plug_path = '/opt/sensu-narkisr-plugins/plugins/syncthing/',
 ){
-  git::clone{$plug_path:
+
+  include sensu
+
+  git::clone{$::plug_path:
     url => 'git://github.com/narkisr/sensu-narkisr-plugins.git'
   } -> Sensu::Check<||>
 

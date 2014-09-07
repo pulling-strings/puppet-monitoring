@@ -4,7 +4,7 @@ class monitoring::syncthing(
   $url='https://localhost:8080',
 ) {
 
-  $exec = "BUNDLE_GEMFILE=${::monitoring::narkisr_plug_path}/Gemfile bundle exec"
+  $exec = "BUNDLE_GEMFILE=${::monitoring::narkisr_plug_path}/Gemfile /usr/local/bin/bundle exec"
 
   sensu::check {'syncthing-status':
     command => "${exec} ${::monitoring::narkisr_plug_path}/plugins/syncthing/check-status.rb -u ${url} -t ${token}"

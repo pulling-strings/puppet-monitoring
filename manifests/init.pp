@@ -3,6 +3,8 @@ class monitoring(
   $narkisr_plug_path = '/opt/sensu-narkisr-plugins',
   $community_plug_path = '/opt/sensu-community-plugins',
 ){
+  include git
+
   package{['ruby1.9.1-dev', 'build-essential']:
     ensure  => present
   } -> Class['sensu']

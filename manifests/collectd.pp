@@ -2,12 +2,17 @@
 class monitoring::collectd(
   $host = false
 ){
-  validat_strings($host)
+  validate_string($host)
 
-  include collectd
+  class{'::collectd':}
 
   collectd::plugin::network::server{$host:
     port => '25826'
+  }
+
+  class { 'collectd::plugin::write_graphite':
+    graphitehost => $host,
+    graphiteport => '2003'
   }
 
   class { 'collectd::plugin::cpu': }

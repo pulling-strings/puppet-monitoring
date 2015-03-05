@@ -18,7 +18,7 @@
      "name": "sensu-sensu",
      "version_range": ">= 1.1.0"
     }, {
-     "name": "collectd",
+     "name": "pdxcat-collectd",
      "version_range": ">= 3.2.0"
     }
 

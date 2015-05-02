@@ -11,7 +11,7 @@ class monitoring::sensu::checks {
   }
 
   sensu::check { 'dropbox':
-    command     => "${custom}/plugins/system/check-status.rb",
+    command     => "${custom}/plugins/dropbox/check-status.rb",
     subscribers => ['dropbox'],
     standalone  => false
   }

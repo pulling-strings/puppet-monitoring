@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /opt/uchiwa/usr/src/uchiwa
+exec /opt/uchiwa/embedded/bin/node app.js -c /opt/uchiwa/usr/src/uchiwa/docker/config-static.js > /var/log/uchiwa.log 2>&1

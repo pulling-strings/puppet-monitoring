@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /opt/sensu/bin/sensu-client -c /etc/sensu/config.json -d /etc/sensu -e /etc/sensu/extensions -v -l /var/log/sensu/client.log

@@ -30,13 +30,8 @@ class monitoring::sensu::server {
   ensure_resource('package', $ruby , {'ensure' => 'present'})
 
   class { 'sensu':
-    rabbitmq_password    => 'secret',
     server               => true,
     api                  => true,
-    api_user             => 'sensu',
-    api_password         => 'sensu',
-    api_port             => 4567,
-    subscriptions        => 'sensu-test',
     rabbitmq_vhost       => '/sensu',
     sensu_plugin_version => 'latest',
     manage_services      => $manage,

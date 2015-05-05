@@ -31,7 +31,7 @@ class monitoring::sensu::uchiwa(
   }
 
   # Somehow private nic does not work so we access host
-  class { 'uchiwa':
+  class { '::uchiwa':
     manage_services     => $manage_service,
     sensu_api_endpoints => $endpoints,
   }

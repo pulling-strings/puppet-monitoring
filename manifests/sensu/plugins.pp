@@ -29,7 +29,7 @@ class monitoring::sensu::plugins(
   package{'net-ping':
     ensure   => present,
     provider => gem
-  }  ~> Service['sensu-client']
+  }
 
   package{'bundler':
     ensure   => present,

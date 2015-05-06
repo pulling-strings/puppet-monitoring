@@ -6,14 +6,6 @@ class monitoring::sensu::uchiwa(
   if($::virtual == 'docker') {
     $manage_service = false
 
-    file { '/opt/uchiwa/usr/src/uchiwa/docker/config-static.js':
-      ensure => file,
-      mode   => '0644',
-      source => 'puppet:///modules/monitoring/config.js',
-      owner  => root,
-      group  => root,
-    }
-
     file{'/etc/service/uchiwa':
       ensure => directory,
     } ->

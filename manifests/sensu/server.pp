@@ -5,7 +5,7 @@ class monitoring::sensu::server {
   class {'monitoring::sensu::rabbit':} ~> Class['sensu']
 
   if($::virtual == 'docker'){
-    include sensu_server::runit
+    include monitoring::sensu::runit
     $manage = false
   } else {
     $manage = true

@@ -3,18 +3,6 @@ class monitoring::sensu::runit {
 
   include monitoring::sensu::runit::client
 
-  file{'/etc/service/redis':
-    ensure => directory,
-  } ->
-
-  file { '/etc/service/redis/run':
-    ensure => file,
-    mode   => 'u+x',
-    source => 'puppet:///modules/monitoring/run_redis',
-    owner  => root,
-    group  => root,
-  }
-
   file{'/etc/service/rabbitmq':
     ensure => directory,
   } ->

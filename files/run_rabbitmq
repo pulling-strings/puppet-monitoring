@@ -1,2 +1,4 @@
 #!/bin/sh
+ulimit -n 1024
+chown -R rabbitmq:rabbitmq /var/log/rabbitmq
 exec /usr/sbin/rabbitmq-server $@

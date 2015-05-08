@@ -6,7 +6,11 @@ class monitoring::sensu::server {
 
   if($::virtual == 'docker'){
     include monitoring::sensu::runit
+    include ::redis::runit
     $manage = false
+    redis::bind {'no bindings at all':
+      unbind => true
+    }
   } else {
     $manage = true
     Service['rabbitmq-server'] ~> Service['sensu-client']
@@ -19,10 +23,6 @@ class monitoring::sensu::server {
   class {'redis':
     append         => true,
     manage_service => $manage
-  }
-
-  redis::bind {'no bindings at all':
-    unbind => true
   }
 
   $ruby = ['rubygems1.9.1','ruby1.9.1-dev', 'build-essential']

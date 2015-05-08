@@ -8,9 +8,7 @@ class monitoring::sensu::plugins(
 
   include git
 
-  $ruby = ['rubygems1.9.1','ruby1.9.1-dev', 'build-essential']
-
-  ensure_resource('package', $ruby , {'ensure' => 'present'})
+  ensure_packages(['rubygems1.9.1','ruby1.9.1-dev', 'build-essential'])
 
   User['sensu'] ->
 

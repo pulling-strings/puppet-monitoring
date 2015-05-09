@@ -45,10 +45,10 @@ class monitoring::sensu::plugins(
   }
 
 
-  ensure_resource('class', 'sudo', {'purge' => false, 'config_file_replace' => false})
-
-  sudo::conf { 'sensu dropbox':
-    content => 'sensu ALL=NOPASSWD: ps aux | grep dropbox',
-  }
+  # ensure_resource('class', 'sudo', {'purge' => false, 'config_file_replace' => false})
+  #
+  # sudo::conf { 'sensu dropbox':
+  #   content => 'sensu ALL=NOPASSWD: ps aux | grep dropbox',
+  # }
 }
 

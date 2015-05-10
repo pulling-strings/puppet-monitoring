@@ -1,5 +1,5 @@
 # Serverspec monitoring
-class monitoring::serverspec(
+class monitoring::sensu::checks::serverspec(
   $name = '',
   $repo ='',
   $dst  ="/opt",

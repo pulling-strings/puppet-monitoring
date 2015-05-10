@@ -1,5 +1,5 @@
 # common checks
-class monitoring::sensu::checks(
+class monitoring::sensu::checks::base(
   $token='',
   $url='https://localhost:8080',
 ){
@@ -21,11 +21,4 @@ class monitoring::sensu::checks(
 
   $exec = "BUNDLE_GEMFILE=${custom}/Gemfile /usr/local/bin/bundle exec"
 
-  sensu::check {'syncthing-status':
-    command => "${exec} ${custom}/plugins/syncthing/check-status.rb -u ${url} -t ${token}"
-  }
-
-  sensu::check {'syncthing-errors':
-    command => "${exec} ${custom}/plugins/syncthing/check-errors.rb -u ${url} -t ${token}"
-  }
 }

@@ -17,5 +17,4 @@ class monitoring::serverspec(
   sensu::check {"${name}-sensu-serverspec":
     command => "${exec} ${::monitoring::community_plug_path}/plugins/serverspec/check-serverspec.rb ${url} -d ${dst} -t spec/${specs}"
   }
-  #  ./check-serverspec.rb -d /vagrant -t spec/backup/*
 }

@@ -2,6 +2,7 @@
 class monitoring::sensu::checks::base(
   $token='',
   $url='https://localhost:8080',
+  $user = 'vagrant'
 ){
 
   $community = "${::monitoring::sensu::plugins::base}/${::monitoring::sensu::plugins::community}"
@@ -14,7 +15,7 @@ class monitoring::sensu::checks::base(
   }
 
   sensu::check { 'dropbox':
-    command     => "${custom}/plugins/dropbox/check-status.rb",
+    command     => "${custom}/plugins/dropbox/check-status.rb -u ${user}",
     subscribers => ['dropbox'],
     standalone  => false
   }

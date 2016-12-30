@@ -12,7 +12,7 @@
       "name": "puppetlabs-stdlib",
       "version_range": ">= 1.0.0"
     }, {
-     "name": "narkisr-git",
+     "name": "strings-git",
      "version_range": ">= 0.0.1"
     }, {
      "name": "pdxcat-collectd",
